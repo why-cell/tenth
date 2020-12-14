@@ -1,12 +1,14 @@
 package com.example.ten;
 
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
-
-import android.os.Bundle;
-
-import java.util.ArrayList;
 
 import com.example.ten.adapter.GoodsPagerAdapter;
 import com.example.ten.util.DateUtil;
@@ -15,13 +17,10 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener;
 import com.google.android.material.tabs.TabLayout.Tab;
 
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
+import java.util.ArrayList;
 
 
-public class TabLayoutActivity<TabLayout, OnTabSelectedListener> extends AppCompatActivity implements OnTabSelectedListener {
+public class TabLayoutActivity extends AppCompatActivity implements OnTabSelectedListener {
     private final static String TAG = "TabLayoutActivity";
     private ViewPager vp_content; // 定义一个翻页视图对象
     private TabLayout tab_title; // 定义一个标签布局对象
@@ -39,7 +38,8 @@ public class TabLayoutActivity<TabLayout, OnTabSelectedListener> extends AppComp
         setSupportActionBar(tl_head);
         mTitleArray.add("商品");
         mTitleArray.add("详情");
-        //mTitleArray.add("评价");
+        mTitleArray.add("评价");
+        mTitleArray.add("推荐");
         initTabLayout(); // 初始化标签布局
         initTabViewPager(); // 初始化标签翻页
     }
@@ -53,17 +53,20 @@ public class TabLayoutActivity<TabLayout, OnTabSelectedListener> extends AppComp
         // 给tab_title添加一个指定文字的标签
 //        tab_title.addTab(tab_title.newTab().setText(mTitleArray.get(1)));
         // 给tab_title添加一个指定布局的标签
-        tab_title.addTab(tab_title.newTab().setCustomView(R.layout.item_toolbar1));
+        tab_title.addTab(tab_title.newTab().setCustomView(R.drawable.item_toolbar1));
         TextView tv_toolbar1 = findViewById(R.id.tv_toolbar1);
         tv_toolbar1.setText(mTitleArray.get(0));
         // 给tab_title添加一个指定布局的标签
-        tab_title.addTab(tab_title.newTab().setCustomView(R.layout.item_toolbar2));
+        tab_title.addTab(tab_title.newTab().setCustomView(R.drawable.item_toolbar2));
         TextView tv_toolbar2 = findViewById(R.id.tv_toolbar2);
         tv_toolbar2.setText(mTitleArray.get(1));
-        // 给tab_title添加一个指定布局的标签
-        //tab_title.addTab(tab_title.newTab().setCustomView(R.layout.item_toolbar2));
-        //TextView tv_toolbar3 = findViewById(R.id.tv_toolbar3);
-        //tv_toolbar3.setText(mTitleArray.get(2));
+        tab_title.addTab(tab_title.newTab().setCustomView(R.drawable.item_toolbar3));
+        TextView tv_toolbar3 = findViewById(R.id.tv_toolbar3);
+        tv_toolbar3.setText(mTitleArray.get(2));
+        tab_title.addTab(tab_title.newTab().setCustomView(R.drawable.item_toolbar4));
+        TextView tv_toolbar4 = findViewById(R.id.tv_toolbar4);
+        tv_toolbar4.setText(mTitleArray.get(3));
+
         // 给tab_title添加标签选中监听器
         tab_title.addOnTabSelectedListener(this);
     }
